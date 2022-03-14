@@ -10,6 +10,7 @@ var schema = buildSchema(`
    message:String
    message2:String
    getContent: [String]
+   posts(offset: Int, limit: Int): [Course]
   }
   type Mutation {
     updateCourseTopic(id: Int!, topic: String): Course
@@ -134,6 +135,11 @@ var updateCourseTopic = function ({ id, topic }) {
   return coursesData.filter((course) => course.id === id)[0];
 };
 
+var getNext = function ({ offset, limit }) {
+  // console.log(coursesData.slice(offset, limit));
+  return coursesData.slice(offset, offset + limit);
+};
+
 // The root provides a resolver function for each API endpoint
 var root = {
   course: getCourse,
@@ -141,6 +147,7 @@ var root = {
   updateCourseTopic: updateCourseTopic,
   message: () => "Hello Word!",
   message2: () => "Hello again! ",
+  posts: getNext,
 };
 
 var app = express();
