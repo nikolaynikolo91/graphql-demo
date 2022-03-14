@@ -7,6 +7,9 @@ var schema = buildSchema(`
   type Query {
    course(id: Int!): Course
    courses(topic: String): [Course]
+   message:String
+   message2:String
+   getContent: [String]
   }
   type Mutation {
     updateCourseTopic(id: Int!, topic: String): Course
@@ -19,6 +22,7 @@ var schema = buildSchema(`
     topic: String
     url: String
   }
+
 `);
 
 var coursesData = [
@@ -49,6 +53,54 @@ var coursesData = [
   {
     id: 4,
     title: "four title",
+    author: "Andrew Mead, Rob Percival",
+    description: "four description",
+    topic: "JavaScript",
+    url: "https:foururl",
+  },
+  {
+    id: 5,
+    title: "five title",
+    author: "Andrew Mead, Rob Percival",
+    description: "four description",
+    topic: "JavaScript",
+    url: "https:foururl",
+  },
+  {
+    id: 6,
+    title: "six title",
+    author: "Andrew Mead, Rob Percival",
+    description: "four description",
+    topic: "JavaScript",
+    url: "https:foururl",
+  },
+  {
+    id: 7,
+    title: "seven title",
+    author: "Andrew Mead, Rob Percival",
+    description: "four description",
+    topic: "JavaScript",
+    url: "https:foururl",
+  },
+  {
+    id: 8,
+    title: "eight title",
+    author: "Andrew Mead, Rob Percival",
+    description: "four description",
+    topic: "JavaScript",
+    url: "https:foururl",
+  },
+  {
+    id: 9,
+    title: "nine title",
+    author: "Andrew Mead, Rob Percival",
+    description: "four description",
+    topic: "JavaScript",
+    url: "https:foururl",
+  },
+  {
+    id: 10,
+    title: "ten title",
     author: "Andrew Mead, Rob Percival",
     description: "four description",
     topic: "JavaScript",
@@ -87,6 +139,8 @@ var root = {
   course: getCourse,
   courses: getCourses,
   updateCourseTopic: updateCourseTopic,
+  message: () => "Hello Word!",
+  message2: () => "Hello again! ",
 };
 
 var app = express();
