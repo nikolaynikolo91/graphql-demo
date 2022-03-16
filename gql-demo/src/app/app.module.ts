@@ -16,9 +16,10 @@ import {
   HttpBatchLink,
   HttpBatchLinkModule,
 } from 'apollo-angular-link-http-batch';
+import { NativeGraphqlComponent } from './native-graphql/native-graphql.component';
 
 @NgModule({
-  declarations: [AppComponent, ApolloAngularComponent, HomeComponent],
+  declarations: [AppComponent, ApolloAngularComponent, HomeComponent, NativeGraphqlComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

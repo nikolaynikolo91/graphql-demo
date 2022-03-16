@@ -12,15 +12,15 @@ export class ApolloAngularComponent implements OnInit {
   //Apollo Angular
 
   getSingleCourse() {
-    this.apolloService.getSingleCourseWithId().subscribe(console.log);
+    this.apolloService
+      .getSingleCourseWithId()
+      .subscribe((data) => console.log(data, 'Apollo'));
   }
 
   updateTopicById() {
-    this.apolloService.updateCourseByTopic().subscribe(console.log);
-  }
-
-  getCoursesByTopic() {
-    this.apolloService.getCoursesByTopic().subscribe(console.log);
+    this.apolloService
+      .updateCourseByTopic()
+      .subscribe((data) => console.log(data, 'Apollo'));
   }
 
   getNext() {
@@ -28,6 +28,14 @@ export class ApolloAngularComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apolloService.paginationStart().subscribe(console.log);
+    this.apolloService
+      .paginationStart()
+      .subscribe((data) => console.log(data, 'Apollo'));
   }
+
+  // getCoursesByTopic() {
+  //   this.apolloService
+  //     .getCoursesByTopic()
+  //     .subscribe((data) => console.log(data, 'Apollo'));
+  // }
 }

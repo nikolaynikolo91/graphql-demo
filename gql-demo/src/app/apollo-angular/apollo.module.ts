@@ -2,12 +2,7 @@ import { NgModule } from '@angular/core';
 import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { ApolloClientOptions } from '@apollo/client/core';
 import { HttpLink } from 'apollo-angular/http';
-import { BatchHttpLink } from '@apollo/client/link/batch-http';
-// apollo
-import { Apollo } from 'apollo-angular';
-import { ApolloLink, InMemoryCache } from '@apollo/client/core';
-import { SchemaLink } from '@apollo/client/link/schema';
-
+import { InMemoryCache } from '@apollo/client/core';
 import { offsetLimitPagination } from '@apollo/client/utilities';
 
 const uri = 'http://localhost:4000/graphql'; // <-- add the URL of the GraphQL server here

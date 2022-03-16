@@ -29,16 +29,6 @@ export class ApolloAngularService {
 
   constructor(private apollo: Apollo) {}
 
-  getSimpleData() {
-    return this.apollo.client.watchQuery({
-      query: gql`
-        {
-          message2
-        }
-      `,
-    });
-  }
-
   getSingleCourseWithId() {
     return this.apollo.client.watchQuery({
       query: gql`
@@ -54,26 +44,6 @@ export class ApolloAngularService {
       `,
       variables: {
         courseID: 1,
-      },
-    });
-  }
-
-  getCoursesByTopic() {
-    return this.apollo.client.watchQuery({
-      query: gql`
-        query getCoursesByTopic($topic: String) {
-          courses(topic: $topic) {
-            id
-            title
-            author
-            description
-            topic
-            url
-          }
-        }
-      `,
-      variables: {
-        topic: 'Node.js',
       },
     });
   }
@@ -115,4 +85,34 @@ export class ApolloAngularService {
       },
     });
   }
+
+  // getCoursesByTopic() {
+  //   return this.apollo.watchQuery({
+  //     query: gql`
+  //       query getCoursesByTopic($topic: String) {
+  //         courses(topic: $topic) {
+  //           id
+  //           title
+  //           author
+  //           description
+  //           topic
+  //           url
+  //         }
+  //       }
+  //     `,
+  //     variables: {
+  //       topic: 'Node.js',
+  //     },
+  //   }).valueChanges;
+  // }
+
+  // getSimpleData() {
+  //   return this.apollo.watchQuery({
+  //     query: gql`
+  //       {
+  //         message
+  //       }
+  //     `,
+  //   }).valueChanges;
+  // }
 }
