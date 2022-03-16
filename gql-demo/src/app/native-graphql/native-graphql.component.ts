@@ -8,12 +8,15 @@ import { NativeGraphqlService } from './native-graphql.service';
   styleUrls: ['./native-graphql.component.scss'],
 })
 export class NativeGraphqlComponent implements OnInit {
+  course: any;
+  posts: any[] = [];
+
   private paginationOffSet = 0;
   private pageSize = 2;
 
   constructor(private nativeGraph: NativeGraphqlService) {}
 
-  getCourseById() {
+  getCourseById(id: number) {
     this.nativeGraph
       .query({
         query: `
@@ -28,13 +31,16 @@ export class NativeGraphqlComponent implements OnInit {
         }
       `,
         variables: {
-          courseID: 1,
+          courseID: id,
         },
       })
-      .subscribe((data) => console.log(data, 'Native'));
+      .subscribe((data: any) => {
+        this.course = data.course;
+        console.log(data.course, 'Native');
+      });
   }
 
-  updateTopic() {
+  updateTopic(id: number, topic: string) {
     this.nativeGraph
       .mutate({
         mutation: `
@@ -50,8 +56,8 @@ export class NativeGraphqlComponent implements OnInit {
         }
       `,
         variables: {
-          id: 1,
-          topic: 'JavaScript',
+          id: id,
+          topic: topic,
         },
       })
       .subscribe((data) => console.log(data, 'Native'));
@@ -104,6 +110,9 @@ export class NativeGraphqlComponent implements OnInit {
           this.paginationOffSet = result.posts.length + this.pageSize;
         })
       )
-      .subscribe((data) => console.log(data, 'Native'));
+      .subscribe((data) => {
+        this.posts = data.posts;
+        console.log(data.posts, 'Native');
+      });
   }
 }

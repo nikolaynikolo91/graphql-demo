@@ -29,7 +29,7 @@ export class ApolloAngularService {
 
   constructor(private apollo: Apollo) {}
 
-  getSingleCourseWithId() {
+  getSingleCourseWithId(id: number) {
     return this.apollo.client.watchQuery({
       query: gql`
         query getSingleCourse($courseID: Int!) {
@@ -43,12 +43,12 @@ export class ApolloAngularService {
         }
       `,
       variables: {
-        courseID: 1,
+        courseID: id,
       },
     });
   }
 
-  updateCourseByTopic() {
+  updateCourseByTopic(id: number, topic: string) {
     return this.apollo.mutate({
       mutation: gql`
         mutation getUpdateTopic($id: Int!, $topic: String) {
@@ -63,8 +63,8 @@ export class ApolloAngularService {
         }
       `,
       variables: {
-        id: 1,
-        topic: 'Angular',
+        id: id,
+        topic: topic,
       },
     });
   }

@@ -1,13 +1,43 @@
 <div class="mat-elevation-z8">
   <div><h2>Apollo Angular</h2></div>
-  <button (click)="getSingleCourse()" mat-button class="example-label">
-    Course id 1
+  <span>Course id:</span><input #courseId type="number" />
+  <button
+    (click)="getSingleCourse(+courseId.value)"
+    mat-button
+    class="example-label"
+  >
+    Show Course
   </button>
-  <button (click)="updateTopicById()" mat-button class="example-label">
-    change topic id 1
+  <hr />
+  <span>Course id:</span><input #topicCourseId type="number" />
+  <span>Topic:</span><input #courseTopic type="text" />
+  <button
+    (click)="updateTopicById(+topicCourseId.value, courseTopic.value)"
+    mat-button
+    class="example-label"
+  >
+    Change
   </button>
+  <div *ngIf="course">
+    <hr />
+    <h2>Course</h2>
+    <p>id: {{ course.id }}</p>
+    <p>url: {{ course.url }}</p>
+    <p>title: {{ course.title }}</p>
+    <p>topic: {{ course.topic }}</p>
+  </div>
 
-  <button mat-button class="example-label" (click)="getNext()">
-    next page
-  </button>
+  <hr />
+  <h2>Course Posts</h2>
+  <div *ngFor="let post of posts">
+    <div>
+      <hr />
+      <h2>Course</h2>
+      <p>id: {{ post.id }}</p>
+      <p>url: {{ post.url }}</p>
+      <p>title: {{ post.title }}</p>
+      <p>topic: {{ post.topic }}</p>
+    </div>
+  </div>
+  <button mat-button class="example-label" (click)="getNext()">get more</button>
 </div>

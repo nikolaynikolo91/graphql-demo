@@ -7,19 +7,23 @@ import { ApolloAngularService } from './apollo.service';
   styleUrls: ['./apollo-angular.component.scss'],
 })
 export class ApolloAngularComponent implements OnInit {
+  course: any;
+  posts: any[] = [];
+
   constructor(private apolloService: ApolloAngularService) {}
 
   //Apollo Angular
 
-  getSingleCourse() {
-    this.apolloService
-      .getSingleCourseWithId()
-      .subscribe((data) => console.log(data, 'Apollo'));
+  getSingleCourse(id: number) {
+    this.apolloService.getSingleCourseWithId(id).subscribe((data: any) => {
+      this.course = data.data.course;
+      console.log(data.data.course, 'Apollo');
+    });
   }
 
-  updateTopicById() {
+  updateTopicById(id: number, topic: string) {
     this.apolloService
-      .updateCourseByTopic()
+      .updateCourseByTopic(id, topic)
       .subscribe((data) => console.log(data, 'Apollo'));
   }
 
@@ -28,9 +32,10 @@ export class ApolloAngularComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apolloService
-      .paginationStart()
-      .subscribe((data) => console.log(data, 'Apollo'));
+    this.apolloService.paginationStart().subscribe((data) => {
+      this.posts = data.data.posts;
+      console.log(data.data, 'Apollo');
+    });
   }
 
   // getCoursesByTopic() {
