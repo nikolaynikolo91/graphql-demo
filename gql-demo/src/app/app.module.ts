@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -9,17 +8,24 @@ import { ApolloAngularComponent } from './apollo-angular/apollo-angular.componen
 import { ApolloAngularModule } from './apollo-angular/apollo.module';
 import { ApolloAngularService } from './apollo-angular/apollo.service';
 import { HttpClientModule } from '@angular/common/http';
-
 import { MatTabsModule } from '@angular/material/tabs';
 import { HomeComponent } from './home/home.component';
-import {
-  HttpBatchLink,
-  HttpBatchLinkModule,
-} from 'apollo-angular-link-http-batch';
 import { NativeGraphqlComponent } from './native-graphql/native-graphql.component';
+import { StoreModule } from '@ngrx/store';
+
+import { FormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
+import { NativeEffect } from './native-graphql/state/native-graphql.effects';
+import { postsReducer } from './native-graphql/state/native-graphql.reducer';
+// import { postReducer } from './postReducer.reducer';
 
 @NgModule({
-  declarations: [AppComponent, ApolloAngularComponent, HomeComponent, NativeGraphqlComponent],
+  declarations: [
+    AppComponent,
+    ApolloAngularComponent,
+    HomeComponent,
+    NativeGraphqlComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,6 +34,9 @@ import { NativeGraphqlComponent } from './native-graphql/native-graphql.componen
     ApolloAngularModule,
     HttpClientModule,
     MatTabsModule,
+    FormsModule,
+    EffectsModule.forRoot([NativeEffect]),
+    StoreModule.forRoot({ posts: postsReducer }),
   ],
   providers: [ApolloAngularService],
   bootstrap: [AppComponent],

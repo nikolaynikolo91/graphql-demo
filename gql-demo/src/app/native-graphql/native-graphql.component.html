@@ -18,18 +18,20 @@
   >
     Change
   </button>
-  <div *ngIf="course">
-    <hr />
-    <h2>Course</h2>
-    <p>id: {{ course.id }}</p>
-    <p>url: {{ course.url }}</p>
-    <p>title: {{ course.title }}</p>
-    <p>topic: {{ course.topic }}</p>
+  <div *ngIf="course$ | async as p">
+    <div *ngIf="p.id">
+      <hr />
+      <h2>Course</h2>
+      <p>id: {{ p.id }}</p>
+      <p>url: {{ p.url }}</p>
+      <p>title: {{ p.title }}</p>
+      <p>topic: {{ p.topic }}</p>
+    </div>
   </div>
 
   <hr />
   <h2>Course Posts</h2>
-  <div *ngFor="let post of posts">
+  <div *ngFor="let post of posts$ | async">
     <div>
       <hr />
       <h2>Course</h2>
@@ -43,3 +45,17 @@
     get more
   </button>
 </div>
+
+<!-- <P>Message : {{ message$ | async }}</P>
+<button (click)="spanishMessage()">SPANISH</button>
+<button (click)="frenchMessage()">FRENCH</button>
+<div *ngIf="post$ | async as p">
+  <h2>{{ p.text }}</h2>
+  <h4>Votes: {{ p.likes }}</h4>
+
+  <button (click)="upvote()">upvote</button>
+  <button (click)="resetPost()">reset</button>
+  <button (click)="downvote()">downvote</button>
+  <input [(ngModel)]="text" />
+  <button (click)="editText()">Change Title</button>
+</div> -->
