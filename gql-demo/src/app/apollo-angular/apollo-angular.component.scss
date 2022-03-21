@@ -1,4 +1,28 @@
-table {
-  width: 500px;
-  height: 500px;
+.courses {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.margin-left {
+  margin-left: 10px;
+}
+
+.course {
+  padding-left: 10px;
+  border: 2px solid rgb(172, 170, 170);
+  margin-bottom: 5px;
+}
+
+.single-course {
+  background-color: ghostwhite;
+  text-align: center;
+}
+
+.more-wrapper {
+  display: flex;
+  justify-content: center;
+  button {
+    padding-top: 5px;
+    border-radius: 17px;
+  }
 }

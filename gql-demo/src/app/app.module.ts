@@ -18,13 +18,17 @@ import { EffectsModule } from '@ngrx/effects';
 import { NativeEffect } from './native-graphql/state/native-graphql.effects';
 import { postsReducer } from './native-graphql/state/native-graphql.reducer';
 // import { postReducer } from './postReducer.reducer';
-
+import { MatIconModule } from '@angular/material/icon';
+import { HttpBehaviorSubjectComponent } from './http-behavior-subject/http-behavior-subject.component';
+import { HttpSimpleComponent } from './http-simple/http-simple.component';
 @NgModule({
   declarations: [
     AppComponent,
     ApolloAngularComponent,
     HomeComponent,
     NativeGraphqlComponent,
+    HttpBehaviorSubjectComponent,
+    HttpSimpleComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,8 +39,10 @@ import { postsReducer } from './native-graphql/state/native-graphql.reducer';
     HttpClientModule,
     MatTabsModule,
     FormsModule,
+
     EffectsModule.forRoot([NativeEffect]),
     StoreModule.forRoot({ posts: postsReducer }),
+    MatIconModule,
   ],
   providers: [ApolloAngularService],
   bootstrap: [AppComponent],

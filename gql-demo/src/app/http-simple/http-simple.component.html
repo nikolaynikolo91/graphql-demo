@@ -1,8 +1,8 @@
 <div class="courses">
-  <div><h2>Apollo Angular</h2></div>
+  <div><h2>Native Graphql</h2></div>
   <span>Course id:</span><input class="margin-left" #courseId type="number" />
   <button
-    (click)="getSingleCourse(+courseId.value)"
+    (click)="getCourseById(+courseId.value)"
     mat-button
     class="example-label"
     class="margin-left"
@@ -15,7 +15,7 @@
   <span class="margin-left">Topic:</span
   ><input class="margin-left" #courseTopic type="text" />
   <button
-    (click)="updateTopicById(+topicCourseId.value, courseTopic.value)"
+    (click)="updateTopic(+topicCourseId.value, courseTopic.value)"
     mat-button
     class="example-label"
     class="margin-left"
@@ -23,12 +23,14 @@
     Change
   </button>
   <div *ngIf="course" class="courses single-course">
-    <hr />
-    <h2>Course</h2>
-    <p>id: {{ course.id }}</p>
-    <p>url: {{ course.url }}</p>
-    <p>title: {{ course.title }}</p>
-    <p>topic: {{ course.topic }}</p>
+    <div *ngIf="course.id">
+      <hr />
+      <h2>Course</h2>
+      <p>id: {{ course.id }}</p>
+      <p>url: {{ course.url }}</p>
+      <p>title: {{ course.title }}</p>
+      <p>topic: {{ course.topic }}</p>
+    </div>
   </div>
 
   <hr />
@@ -43,7 +45,7 @@
     </div>
   </div>
   <div class="more-wrapper">
-    <button mat-button class="example-label" (click)="getNext()">
+    <button mat-button class="example-label" (click)="fetchMore()">
       <mat-icon>keyboard_arrow_down</mat-icon>
     </button>
   </div>

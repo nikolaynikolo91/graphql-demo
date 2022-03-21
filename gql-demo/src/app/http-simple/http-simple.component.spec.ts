@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListComponent } from './list.component';
+import { HttpSimpleComponent } from './http-simple.component';
 
-describe('ListComponent', () => {
-  let component: ListComponent;
-  let fixture: ComponentFixture<ListComponent>;
+describe('HttpSimpleComponent', () => {
+  let component: HttpSimpleComponent;
+  let fixture: ComponentFixture<HttpSimpleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListComponent ]
+      declarations: [ HttpSimpleComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListComponent);
+    fixture = TestBed.createComponent(HttpSimpleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
